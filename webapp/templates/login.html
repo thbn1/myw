@@ -1,0 +1,124 @@
+{%extends "navbar.html"%}
+
+{%block content%}
+
+<div class="container p-2 p-sm-5 pt-5 d-flex justify-content-center h-100" style="" id="vwcont">
+    <div style="" class="logpan rounded-3 text-light px-3 px-sm-5 py-5 m-auto">
+      <div class="p-3 pt-4">
+        <ul id="btnul" class="nav nav-pills mb-2 w-100 row pb-5 m-0" id="pills-tab" role="tablist">
+          <li class="nav-item text-center col ps-0">
+            <a class="nav-link active btl py-2 rounded-1 ac2"  onclick="logregtab(this)" id="pills-login-tab" data-toggle="pill" href="#login" role="tab" aria-controls="pills-home" aria-selected="true"><div class="py-2">Giriş Yap</div></a>
+          </li>
+          <li class="nav-item text-center col pe-0">
+            <a class="nav-link btr py-2 rounded-1 text-light" onclick="logregtab(this)" id="pills-register-tab" data-toggle="pill" href="#register" role="tab" aria-controls="pills-profile" aria-selected="false"><div class="py-2">Kayıt Ol</div></a>
+          </li>
+          
+        </ul>
+        <form id="logtab" method="POST" action="/login_request" style="">
+          {%csrf_token%}
+          {%if error%}
+          <div class="alert-danger">
+              <p class="alert">{{error}}</p>
+          </div>
+          {%endif%}
+          <div>
+            
+            <input name="username" style="border:none !important;background-color:#161f27;height:45px;color:white;" placeholder="Kullanıcı adı" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </input>
+          </div>
+          <div class="pt-5">
+
+            <input name="password" type="password" placeholder="Şifre (şifreniz test123)" style="border:none !important;background-color:#161f27;!important;color:#dbdbdb;height:45px" type="password" class="form-control text-light w-100" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </input>
+          </div>
+          <div class="pt-5 text-center row align-items-center">
+            <div class="col">
+              <a class="col zlink">Şifremi unuttum</a>
+            </div>
+            <div class="col-auto">
+              <button type="submit" style="border:none" class="btnlog btn btn-primary rounded-1 mb-2 px-5">Giriş Yap</button>
+          </div>
+            <div class="col">
+              <a class="zlink">Hesap oluştur</a>
+            </div>
+          </div>
+        </form>
+        <form id="regtab" method="POST" action="/register_request" style="display:none">
+          {%csrf_token%}
+          {%if error%}
+          <div class="alert-danger">
+              <p class="alert">{{error}}</p>
+          </div>
+          {%endif%}
+          <div>
+            
+            <input name="username" style="border:none !important;background-color:#161f27;height:36px;color:white;" placeholder="Kullanıcı Adı" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </input>
+          </div>
+          <div class="pt-4">
+
+            <input placeholder="E-Mail" style="border:none !important;background-color:#20242c;!important;color:#dbdbdb;height:36px" type="email" class="form-control text-light w-100" id="exampleInputEmail1" aria-describedby="emailHelp" disabled>
+            </input>
+          </div>
+          <div class="pt-4">
+
+            <input name="firstname" placeholder="Ad" style="border:none !important;background-color:#161f27;!important;color:#dbdbdb;height:36px" type="text" class="form-control text-light w-100" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </input>
+          </div>
+          <div class="pt-4">
+
+            <input name="lastname" placeholder="Soyad" style="border:none !important;background-color:#161f27;!important;color:#dbdbdb;height:36px" type="text" class="form-control text-light w-100" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </input>
+          </div>
+          <div class="pt-4">
+
+            <input placeholder="Şifre (şifreniz test123)" style="border:none !important;background-color:#20242c;!important;color:#dbdbdb;height:36px" type="email" class="form-control text-light w-100" id="exampleInputEmail1" aria-describedby="emailHelp" disabled>
+            </input>
+          </div>
+          <div class="pt-4">
+
+            <input placeholder="Şifre (Tekrar)" style="border:none !important;background-color:#20242c;!important;color:#dbdbdb;height:36px" type="email" class="form-control text-light w-100" id="exampleInputEmail1" aria-describedby="emailHelp" disabled>
+            </input>
+          </div>
+          <div class="text-center row align-items-center pt-4">
+            <div class="col">
+            
+            </div>
+            <div class="col-auto pt-2">
+              <button type="submit" id="" style="border:none" class="btnlog btn btn-primary rounded-1 mb-2 px-5">Kayıt Ol</button>
+          </div>
+            <div class="col">
+            
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+</div>
+
+<script>
+  function logregtab(elem){
+    var imgdiv=document.getElementById("btnul");
+    var imgs=imgdiv.getElementsByTagName("a");
+
+   
+    var activeimg=imgdiv.getElementsByClassName("active");
+    
+    activeimg[0].setAttribute("class",activeimg[0].getAttribute("class").replace(" active",""));
+  
+    elem.className += " active";
+    var regtab=document.getElementById("regtab");
+    var logtab=document.getElementById("logtab");
+    if(elem.getAttribute("id")=="pills-register-tab"){
+  
+      regtab.style="display:block";
+      logtab.style="display:none";
+
+      }
+    else{
+      regtab.style="display:none";
+      logtab.style="display:block";
+    }
+      };
+</script>
+    {%endblock%}

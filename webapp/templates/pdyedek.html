@@ -1,0 +1,363 @@
+{%extends "navbar.html"%}
+{%block content%}
+
+<div class="container-lg pb-5 shadow px-0">
+    <div class="p-0">
+        <div class="row row-cols-1 row-cols-lg-2 m-0 rounded-1 mh-75">
+            <div class="col-12 column-xl-5 p-1 p-md-2 pb-md-0 ">
+                <div id="slidebar2" class="pb-0 d-flex align-items-center flex-column-reverse flex-xl-row scroll3" style="">
+                    <div id="slides" class="d-flex flex-row flex-xl-column p-1 rounded-0 gap-2 p-1 pdsld mb-0 pe-3" style="overflow-x:auto !important" >
+                        <img class="rounded-1 active" src="{{product.productimage}}" style="" onclick="slideclick(this)">
+                        <img class="rounded-1" src="/static/media/images/2.jpg" style="" onclick="slideclick(this)">
+                        <img class="rounded-1" src="/static/media/images/3.jpg" style="" onclick="slideclick(this)">
+                        <img class="rounded-1" src="/static/media/images/4.jpg" style=""onclick="slideclick(this)">
+                        <img class="rounded-1" src="/static/media/images/5.jpg" style="" onclick="slideclick(this)">
+                        <img class="rounded-1" src="/static/media/images/6.jpg" style="" onclick="slideclick(this)">
+                        <img class="rounded-1" src="/static/media/images/10.jpg"style="" onclick="slideclick(this)">
+                        <img class="rounded-1" src="/static/media/images/8.jpg" style="" onclick="slideclick(this)">
+                        <img class="rounded-1" src="/static/media/images/9.jpg" style="" onclick="slideclick(this)">
+
+
+                    </div>
+                    <div class="p-2">
+                        <img id="mainslide" class="rounded-1 w-100" src="{{product.productimage}}" style="object-fit:cover;max-height:550px;max-width:550px" >
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-12 column-xl-7 pb-0 " >
+                <div class="mb-3 h-100">
+                    <div class="p-sm-4 p-1 pb-0 mt-0 h-100 d-flex flex-column" id="productcontent">
+                        <div class="text-center text-lg-start pb-4" id="contentname">
+                            <span id="contentname" style="font-weight:500 !important">{{product.productname}}<span>
+                        </div>
+                        <div class="row row-cols-2 row-cols-sm-2 pt-3">
+                            
+                            <div class="col-7 d-flex justify-content-start justify-content-sm-start pt-2" id="contentprice">
+                                <span id="pp-price" class="" style="font-weight:700 !important">{{product.productprice}} TL<span>
+                            </div>
+                            <div class="col-5">
+                                <div class="d-flex justify-content-end pt-2" id="contentrating">
+                                   <span class="d-none d-sm-inline-block text-secondary" id="pp-revcount" style="font-weight:400 !important">{{rate}} ({{ratecount}})&nbsp;&nbsp;</span>
+                                   
+                                    <div>
+                                    <svg style="fill:#b6b6b6" id="str" height="1.2em" viewBox="0 0 576 512"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
+                                    <svg style="fill:#b6b6b6" id="str" height="1.2em" viewBox="0 0 576 512"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
+                                    <svg style="fill:#b6b6b6" id="str" height="1.2em" viewBox="0 0 576 512"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
+                                    <svg style="fill:#b6b6b6" id="str" height="1.2em" viewBox="0 0 576 512"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
+                                    <svg style="fill:#b6b6b6" id="str" height="1.2em" viewBox="0 0 576 512"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-end d-inline-block d-sm-none">
+                                    <span class="text-secondary" style="font-size:13px !important;font-weight:600 !important">4,6 (554)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-2 row pt-5">
+                            <div class="col-12 col-md py-3" >
+                                
+                                <button id="addbtnpd" type="button" class="btn rounded-1 p-3 py-3 w-100" ><span style="font-size:14px !important;font-weight:400 !important">Sepete Ekle<span></button>
+                            </div>
+                            <div class="col-md-auto rounded-1 py-3" >
+                                <div class="alert alert-success text-center mb-0" style="" role="alert">
+                                    <span class="" style="font-size:13px !important;font-weight:600 !important;">Satıcı :</span>
+                                    <span class="" style="font-size:13px !important;font-weight:600 !important">&nbsp;<a href="#" class="alert-link">{{seller}}</a>&nbsp; <span class="badge text-bg-success" style="font-size:11px !important;font-weight:400 !important">9.6</span></span>
+                                </div>      
+                            </div>    
+                        </div>
+                        <div class="mt-3 row text-center">
+                            <div class="col">
+                                <div class="alert alert-thema p-1 py-1" role="alert" id="dsccrd">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M482.3 192c34.2 0 93.7 29 93.7 64c0 36-59.5 64-93.7 64l-116.6 0L265.2 495.9c-5.7 10-16.3 16.1-27.8 16.1l-56.2 0c-10.6 0-18.3-10.2-15.4-20.4l49-171.6L112 320 68.8 377.6c-3 4-7.8 6.4-12.8 6.4l-42 0c-7.8 0-14-6.3-14-14c0-1.3 .2-2.6 .5-3.9L32 256 .5 145.9c-.4-1.3-.5-2.6-.5-3.9c0-7.8 6.3-14 14-14l42 0c5 0 9.8 2.4 12.8 6.4L112 192l102.9 0-49-171.6C162.9 10.2 170.6 0 181.2 0l56.2 0c11.5 0 22.1 6.2 27.8 16.1L365.7 192l116.6 0z"/></svg>&nbsp;
+                                    <span class="" style="font-size:11px !important;font-weight:600 !important">ÜCRETSİZ KARGO</span> 
+                                </div>
+
+                            </div>
+                            <div class="col">
+                                <div class="alert alert-thema p-1" role="alert" id="dsccrd">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L369 209z"/></svg>&nbsp;
+                                    <span class="" style="font-size:11px !important;font-weight:600 !important">GÜVENİLİR SATICI</span> 
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="alert alert-thema p-1" role="alert" id="dsccrd">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M374.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-320 320c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l320-320zM128 128A64 64 0 1 0 0 128a64 64 0 1 0 128 0zM384 384a64 64 0 1 0 -128 0 64 64 0 1 0 128 0z"/></svg>&nbsp;
+                                    <span class="" style="font-size:11px !important;font-weight:600 !important">TAKSİT İMKANI</span> 
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pb-5" style="">
+                            <div class="pt-2 row row-cols-4 text-center mb-0 mt-2 d-none d-md-flex px-2" style="">
+                                {%for key,value in product.productcards.items%}
+                                <div class="col px-1">
+                                    <div class="alert alert-light p-2 mb-0 mt-2" role="alert" id="dsccrd">
+                                        <span class="" style="font-size:11px !important;font-weight:500 !important">{{key}}</span><br>
+                                        <span class="" style="font-size:13px !important;font-weight:600 !important">{{value}}</span> 
+                                    </div>
+                                </div>
+                                {%endfor%}
+                
+
+                            </div>
+                        </div>
+                        <div id="botdivp" class="d-flex justify-content-between mt-4">
+                            <a style="font-size=14px;text-decoration:none" href="">
+                               
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="gray" height="23" viewBox="0 -960 960 960" width="24"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z"/></svg>
+                                Beğenilenlere ekle 
+                            </a>
+                            <a style="font-size=14px;text-decoration:none" href="">
+                               
+                                
+                            <svg xmlns="http://www.w3.org/2000/svg" height="21" viewBox="0 -960 960 960" fill="gray" width="24"><path d="M120-40v-640q0-33 23.5-56.5T200-760h400q33 0 56.5 23.5T680-680v640L400-160 120-40Zm80-122 200-86 200 86v-518H200v518Zm560 2v-680H240v-80h520q33 0 56.5 23.5T840-840v680h-80ZM200-680h400-400Z"/></svg>
+                                Listeye ekle
+                            </a>
+                            <a style="font-size=14px;text-decoration:none" href="">
+                               
+                                
+                                
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="gray" height="25" viewBox="0 -960 960 960" width="24"><path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z"/></svg>
+                                    Link paylaş 
+                                </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div id="pdtcont" class="mt-2">
+
+            <div id="pddetail" class="row row-cols-5">
+
+                <div com="desc" class="col col-sm text-center p-3 px-1 px-sm-3 active" onclick="pdtabclick(this)" role="alert" id="ovf">
+                    <span class="d-block" style="" >Açıklama</span>
+        
+                </div>
+
+                <div com="comment" class="col col-sm text-center p-3 px-1 px-sm-3" onclick="pdtabclick(this)" role="alert" id="ovf">
+
+                    <span class="d-none d-sm-block" >Ürün Yorumları</span>
+                    <span class="d-block d-sm-none" >Yorum</span>
+                    
+                </div>
+
+                <div com="installment"  class="col col-sm text-center p-3 px-1 px-sm-3" onclick="pdtabclick(this)" role="alert" id="ovf">
+
+                    <span class="d-none d-sm-block" >Taksit Seçenekleri</span>
+                    <span class="d-block d-sm-none" >Taksit</span>
+                </div>
+
+                <div com="return"  class="col col-sm text-center p-3 px-1 px-sm-3" onclick="pdtabclick(this)" role="alert" id="ovf">
+
+                    <span class="d-none d-sm-block" >İade koşulları</span>
+                    <span class="d-block d-sm-none" >İade</span>
+                </div>
+
+                <div com="seller" class="col col-sm mb-0 text-center p-3 px-1 px-sm-3" onclick="pdtabclick(this)" role="alert" id="ovf">
+
+                    <span class="d-none d-sm-block">Diğer Satıcılar</span>
+                    <span class="d-block d-sm-none" >Satıcılar</span>
+                </div>
+
+            </div>
+                
+
+            <div class="" id="pdtbcont">
+
+                <div class="p-md-3 pt-md-2 p-3 " style="" id='tabdesc'>
+                    <div class="row row-cols-1 row-cols-sm-2 pt-3">
+                        <div class="col mb-5">
+                            <div class="text-center">
+                                <img class="align-middle" src="{{product.productimage}}" style="width:100%; height:auto;display:block;object-fit:contain !important;mix-blend-mode: multiply;">
+                            </div>
+                        </div>
+                        <div class="col px-3" style="" id="pdtbdesc">
+                            <table class="table table-sm table-striped border border-1" >
+                                <caption></caption>
+                                <tbody>
+                                    {% for key,value in product.productdesc.items %}
+                                        <tr>
+                                            <th>{{key}}</th>
+                                            <td>
+                                                    <span>{{value}}</span>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div id='tabcomment' style="display:none">
+                    <div id="comrating" class="bg-white p-3 p-sm-5">
+                        <div class="d-flex justify-content-between align-items-center"> 
+                            <div class="stardiv d-flex d-none d-sm-flex">
+                                <div>
+                                    <svg style="fill:orange" id="str" height="1em" viewBox="0 0 576 512"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
+                                    <svg style="fill:orange" id="str" height="1em" viewBox="0 0 576 512"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
+                                    <svg style="fill:orange" id="str" height="1em" viewBox="0 0 576 512"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
+                                    <svg style="fill:orange" id="str" height="1em" viewBox="0 0 576 512"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
+                                    <svg style="fill:orange" id="str" height="1em" viewBox="0 0 576 512"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
+                                </div>
+                                <div class="ps-2 d-flex">
+                                    <span class="text-secondary" style="font-size:14px !important;font-weight:600 !important">&nbsp;4,6</span>
+                                </div>
+                            </div>
+                            <div class="py-auto bg-blue-300 d-flex d-none d-sm-block" style="align-items:center !important">
+                                <label class="text-secondary m-auto" style="font-size:13px !important;font-weight:600 !important; vertical-align:bottom !important">554 Değerlendirme</label> 
+                            </div>
+                            <div>
+                                <div>
+                                    <select style="font-size:12px !important;font-weight:500 !important" class="form-select" aria-label="Default select example">
+                                        <option selected>minimum 1 yıldız</option>
+                                        <option selected>minimum 2 yıldız</option>
+                                        <option value="1">minimum 3 yıldız</option>
+                                        <option value="2">minimum 4 yıldız</option>
+                                        <option value="3">minimum 4,5 yıldız</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <select style="font-size:12px !important;font-weight:500 !important" class="form-select" aria-label="Default select example">
+                                        <option selected>Sıralama</option>
+                                        <option value="1">Yüksek puan üstte</option>
+                                        <option value="2">Düşük puan üstte</option>
+                                        <option value="3">En yeni üstte</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="mt-2 mb-4">
+                        <div>
+                        <div class="p-0 p-sm-5 py-sm-3">
+                            <div class="rounded-2 border border-1 p-3">
+                                <div class="d-flex align-items-center">
+                                    <div>
+                                        <svg style="fill:orange" id="str" height="0.9em" viewBox="0 0 576 512"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
+                                        <svg style="fill:orange" id="str" height="0.9em" viewBox="0 0 576 512"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
+                                        <svg style="fill:orange" id="str" height="0.9em" viewBox="0 0 576 512"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
+                                        <svg style="fill:orange" id="str" height="0.9em" viewBox="0 0 576 512"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
+                                        <svg style="fill:orange" id="str" height="0.9em" viewBox="0 0 576 512"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
+                                    </div>
+                                    <div>
+                                        <span class="text-secondary" style="font-size:13px !important;font-weight:400 !important">&nbsp;&nbsp;&nbsp;&nbsp;Ahmet E****</span>
+                                    </div>
+                                </div>
+                                <hr class="my-2">
+                                <div class="p-2">
+                                    <p style="font-size:12px !important">
+                                        10 yıllık MSI kullanıcısıyım ve eski bilgisayarımın hala yeni gibi olması ve hiç sorun yaratmaması sebebiyle 2. bilgisayarımı da MSI almaya karar verdim. Ürünü kullandıktan alacak olanlara fikir oluşturması açısından artılarını eksilerini yazıyorum. 
+                                    * Ürünün kasa kalitesi çok iyi. Özellikle tek elle ekranı açabiliyorsunuz.
+                                    * Ekranın ince olması sayesinde 17 inch olsa da biraz daha küçük geldi benim gözüme.
+                                    * Yeni tip ekranlarda IPS Glow olayı olduğunu biliyorudum. Ancak biraz ışık sızması var. Ama beni rahatsız edici düzeyde değil. Sonuçta sorunsuz ekran bulmak imkansız gibi bir şey.
+                                    Kısacası tavsiye edeceğim bir bilgisayar.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-0 p-sm-5 py-sm-3">
+                            <div class="rounded-2 border border-1 p-3">
+                                <div class="d-flex align-items-center">
+                                    <div>
+                                        <svg style="fill:orange" id="str" height="0.9em" viewBox="0 0 576 512"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
+                                        <svg style="fill:orange" id="str" height="0.9em" viewBox="0 0 576 512"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
+                                        <svg style="fill:orange" id="str" height="0.9em" viewBox="0 0 576 512"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
+                                        <svg style="fill:orange" id="str" height="0.9em" viewBox="0 0 576 512"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
+                                        <svg style="fill:orange" id="str" height="0.9em" viewBox="0 0 576 512"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
+                                    </div>
+                                    <div>
+                                        <span class="text-secondary" style="font-size:13px !important;font-weight:400 !important">&nbsp;&nbsp;&nbsp;&nbsp;Ahmet E****</span>
+                                    </div>
+                                </div>
+                                <hr class="my-2">
+                                <div class="p-2">
+                                    <p style="font-size:12px !important">
+                                        Ürün elime geleli 1 hafta oldu. Hızlı, akıcı ve profesyonel bir bilgisayar benim için. Oyun performansı açıkçası beklediğimden de iyiydi. Zaten işlemci, ekran kartı ve rami üst seviye. 17.3 inch ekran da gayet yeterli. Ben çok memnunum ve mutlulukla kullanıyorum.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-0 p-sm-5 py-sm-3">
+                            <div class="rounded-2 border border-1 p-3">
+                                <div class="d-flex align-items-center">
+                                    <div>
+                                        <svg style="fill:orange" id="str" height="0.9em" viewBox="0 0 576 512"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
+                                        <svg style="fill:orange" id="str" height="0.9em" viewBox="0 0 576 512"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
+                                        <svg style="fill:orange" id="str" height="0.9em" viewBox="0 0 576 512"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
+                                        <svg style="fill:orange" id="str" height="0.9em" viewBox="0 0 576 512"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
+                                        <svg style="fill:orange" id="str" height="0.9em" viewBox="0 0 576 512"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
+                                    </div>
+                                    <div>
+                                        <span class="text-secondary" style="font-size:13px !important;font-weight:400 !important">&nbsp;&nbsp;&nbsp;&nbsp;Ahmet E****</span>
+                                    </div>
+                                </div>
+                                <hr class="my-2">
+                                <div class="p-2">
+                                    <p style="font-size:12px !important">
+                                        MSI dünyasını yeni keşfetmeye başlıyorum. Ürünü ön sipariş ile aldım ve hemen 10 Mart itibariyle yollandı. 
+                
+                Ürün 17 inch olmasına rağmen oldukça zarif.
+                İşlemci ve genel donanıma denilebilecek 1 şey var;müthiş. Tek tavsiyem ssd 2 tb olabilirdi.
+                
+                Ekran yenileme hızı ve ekran kartı performansı son derece iyi. 
+                
+                Günlük kullanım yanı sıra; oyun ve grafik tasarım için kullanıyorum ve bu ağır oyun ve programları extreme edition moduna geçerek sorunsuz çalıştırıyor.
+                
+                Kısacası teşekkürler MSI, teşekkürler Hepsiburada.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% load static %}
+<script src="{% static 'js/pdpage.js'%}"></script>
+<script>
+      function slideclick(elem){
+        var imgdiv=document.getElementById("slides");
+        var imgs=imgdiv.getElementsByTagName("img");
+        var imgsrc=elem.getAttribute("src");
+        document.getElementById("mainslide").setAttribute("src",imgsrc)
+        var activeimg=imgdiv.getElementsByClassName("active")
+        activeimg[0].setAttribute("class",activeimg[0].getAttribute("class").replace(" active",""));
+      
+        elem.className += " active";
+      
+      
+      
+          };
+    function showstar(){
+    z=0
+    
+    const elems=document.getElementsByClassName("ratings")
+    var elemslength = elems.length;
+    
+    for (var elm = 0; elm < elemslength; elm++){
+        var rating=parseFloat(elems[elm].getAttribute("id"))/2;
+        
+        var child=elems[elm].children;
+        
+        for (var childelm = 0; childelm < rating; childelm+=1){
+            
+            if (childelm==rating-0.5){
+                child[childelm].querySelector('svg').insertAdjacentHTML("beforeend",'<path d="M288 0c-12.2 .1-23.3 7-28.6 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3L288 439.8V0zM429.9 512c1.1 .1 2.1 .1 3.2 0h-3.2z" fill="orange"/>')
+            }
+            else{
+                child[childelm].setAttribute("style", "fill:orange;");
+            };
+        };
+        
+    }
+    Array.from(elems).forEach(b=>b.removeAttribute('class'));
+    
+};
+</script>  
+
+{%endblock%}

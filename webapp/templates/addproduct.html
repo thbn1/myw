@@ -1,0 +1,212 @@
+{%extends "navbar.html"%}
+
+{%block content%}
+
+
+ 
+    <div class="container p-md-5">
+      <div class="row d-flex justify-content-center align-items-center py-md-5">
+        <div class="col-lg-12 col-xl-11">
+          <div class="card text-black my-5" style="border-radius: 25px;">
+            <div class="card-body p-md-3">
+              <h5 class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Ürün Ekle</h5>
+              <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-6 col-xl-7 order-1 order-lg-1">
+  
+
+  
+                  <form class="mx-1 mx-md-4" method="post" enctype="multipart/form-data" action="/urunekle">
+                    {% csrf_token %}
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <label class="form-label" for="form3Example1c">Ürün Adı</label>
+                        <input type="text" id="name"  onchange="onchng(this);validcontrol(this);" name="name" value="" class="form-control">
+                        <div class="valid-feedback">
+                          {{nameerr}}
+                        </div>
+                      </div>
+                    </div>
+  
+  
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <label class="form-label" for="form3Example4c">Ürünün Fiyatı</label>
+                        <input type="text" id="name"  onchange="onchng(this);validcontrol(this);" name="price" class="form-control" value="">
+                        <div class="valid-feedback">
+                        {{priceerr}}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-0">
+                          <label class="form-label" for="form3Example3c">Ürün Açıklaması</label>
+                          <textarea type="text" id="form3Example3c" onchange="validcontrol(this);" name="description" class="form-control" ></textarea>
+                          <div class="valid-feedback">
+                            {{descerr}}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <label class="form-label" for="form3Example3c">Kategori</label>
+                        <select id="form3Example3c" name="category" class="form-control">
+                          <option>Bilgisayar</option>
+                          <option>Telefon</option>
+                          <option>Tablet</option>
+                          <option>Beyaz Eşya</option>
+                        </select>
+                        
+                      </div>
+                      
+                  </div>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-0">
+                          <label class="form-label" for="form3Example4c">Ürün Stok</label>
+                          <input type="text" id="name" name="stock" onchange="validcontrol(this);onchng(this)" class="form-control" value="0">
+                          <div class="valid-feedback">
+                            {{descerr}}
+                            </div>
+                        </div>
+                      </div>
+                      <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                        <div class="flex-fill mb-0 d-flex justify-content-between border-warning-1 rounded-3">
+                          {%load static%}
+                      <div class="prdbtn" type="button" id="imgbt1" onclick="btnfunc(this)" style="display:inline !important"><img id="prdimg1" src="{% static 'gsetrw5y3147h.png'%}" class="img-thumbnail prdimg"></div>
+                      <div class="prdbtn" type="button" id="imgbt2" style="opacity:0;" onclick="btnfunc(this)" ><img id="prdimg2" src="{% static 'gsetrw5y3147h.png'%}" class="img-thumbnail prdimg"></div>
+                      <div class="prdbtn" type="button" id="imgbt3" style="opacity:0" onclick="btnfunc(this)" ><img id="prdimg3" src="{% static 'gsetrw5y3147h.png'%}" class="img-thumbnail prdimg"></div>
+                      <div class="prdbtn" type="button" id="imgbt4" style="opacity:0" onclick="btnfunc(this)" ><img id="prdimg4" src="{% static 'gsetrw5y3147h.png'%}" class="img-thumbnail prdimg"></div>
+                      <div class="prdbtn" type="button" id="imgbt5" style="opacity:0" onclick="btnfunc(this)" ><img id="prdimg5" src="{% static 'gsetrw5y3147h.png'%}" class="img-thumbnail prdimg"></div>
+                        </div>
+                    </div>
+                      <input type='file' name="photo" id="getFile1" onchange="imagechange(this);onchng(this)" accept="image/*" name="images1" hidden>
+                      <input type='file' id="getFile2" onchange="imagechange(this)" accept="image/*" name="images2" hidden>
+                      <input type='file' id="getFile3" onchange="imagechange(this)" accept="image/*" name="images3" hidden>
+                      <input type='file' id="getFile4" onchange="imagechange(this)" accept="image/*" name="images4" hidden>
+                      <input type='file' id="getFile5" onchange="imagechange(this)" accept="image/*" name="images5" hidden>
+                      <div class="">
+                        <button type="submit" id="submitbtn" type="button" class="btn btn-warning btn-lg ms-2 float-right" hidden>Ürünü Ekle</button>
+                      </div>
+                  </form>
+  
+                </div>
+                <div class="col-md-10 col-lg-6 col-xl-5 d-flex align-items-center order-1 order-lg-2 justify-content-center">
+                  <div class="card" id="prdcard" style="width:14rem;">
+                    <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light text-center"
+                      data-mdb-ripple-color="light">
+                      <img id="cardphoto" src="/static/iconvs/15.jpg" class="w-100" style="object-fit: contain;aspect-ratio: 1 / 1;"/>
+                      <a href="#!">
+
+                        <div class="hover-overlay">
+                          <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="card-body mt-0 align-middle px-2 pt-1 pb-0" >
+                      
+                      <a href="" class="text-reset" style="text-decoration: none;">
+                
+                      <span id="cardname" class="card-title display-3 px-1 mb-3" style="32px !important;" >Ürün Adı</span>
+                        
+                      </a>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="ratings">
+                            <i style="fill:#fbc634"><svg xmlns="/static/iconvs/star-orange.svg" height="1em" viewBox="0 0 576 512"><style></style><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg></i>  
+                            <i style="fill:#fbc634"><svg xmlns="/static/iconvs/star-orange.svg" height="1em" viewBox="0 0 576 512"><style></style><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg></i>
+                            <i style="fill:#fbc634"><svg xmlns="/static/iconvs/star-orange.svg" height="1em" viewBox="0 0 576 512"><style></style><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg></i>
+                            <i style="fill:#fbc634"><svg xmlns="/static/iconvs/star-orange.svg" height="1em" viewBox="0 0 576 512"><style></style><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg></i>
+                            <i style="fill:#e4e4e4"><svg xmlns="/static/iconvs/star-orange.svg" height="1em" viewBox="0 0 576 512"><style></style><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg></i>
+                            <i class="mb-0 px-0 py-0 my-0" style="">(12)</i>
+                          </div> 
+                    
+                        </div>
+                        <div class="text-center" style="">
+                        <hr class="my-3">
+                        <h1 class="mb-1" style="font-size:13px ; font-weight:600 !important;" id="cardprice">9999 TL</h1>
+    
+                      <button id="addbtn" type="button" class="btn btn-outline-primary rounded-2 w-100 mb-2" style="font-weight:500 !important;" data-mdb-ripple-color="dark">Sepete Ekle</button>
+                       
+                     
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  
+                 
+                  
+                </div>
+                <div class="text-center">
+                <button id="sb" type="button" onclick="document.getElementById('submitbtn').click()" class="btn btn-warning btn-lg ms-2 mt-5 mt-lg-1">Ürünü Ekle</button>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <script>
+
+          function onchng(elem){
+            if (elem.name=="name"){
+              document.getElementById("cardname").innerHTML=String(elem.value);
+            }                            
+            else if (elem.name=="price"){
+              document.getElementById("cardprice").innerHTML=String(elem.value)+" TL";
+            }
+            else if (elem.name=="photo"){
+              
+              document.getElementById("cardphoto").src=URL.createObjectURL(elem.files[0]);
+            }
+            else if (elem.name=="stock"){
+              if (parseInt(elem.value)<10){
+                
+                var elem2=document.getElementById("cardseller")
+                elem2.innerHTML="Tükenmek Üzere";
+                elem2.className="badge bg-danger ms-2";
+              }
+              
+            }
+          };
+            function validcontrol(elem){
+              if (elem.value==""){}
+            }
+            function imagechange(elem){
+                var files=elem.files;
+
+                // call them as such; files[0].size will get you the file size of the 0th file
+                if (files[0].size>3000000){
+                    alert("Dosya boyutu maximum 3 MB olabilir")
+                    elem.value=""
+                }
+                if (files.length>0){ 
+                    var idd= parseInt(elem.id.slice(-1))+1
+                    document.getElementById("prdimg"+String(idd-1)).src=URL.createObjectURL(files[0])
+                    if (idd!==6){
+                    document.getElementById("imgbt"+String(idd)).style=""
+                }
+                };
+            };
+            function btnfunc(elem){
+                
+
+                if(elem.getElementsByClassName("prdimg")[0].src.endsWith("gsetrw5y3147h.png")){
+                  document.getElementById('getFile'+elem.id.slice(-1)).click()
+                    
+                }
+                else{
+                  elem.childNodes[0].src="gsetrw5y3147h.png";
+                  document.getElementById('getFile'+elem.id.slice(-1)).value=''    
+                              
+                  elem.getElementsByClassName("prdimg")[0].src="/static/iconvs/gsetrw5y3147h.png"
+                }
+            }
+        </script>
+
+
+    {%endblock%}

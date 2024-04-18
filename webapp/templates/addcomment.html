@@ -1,0 +1,143 @@
+{%extends "navbar.html"%}
+
+{%block content%}
+
+<div class="flex-column flex-grow-1 overflow-auto d-flex">
+  <section class="vh-100">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-12 col-xl-11">
+          <div class="card text-black my-2" style="border-radius: 25px;">
+            <div class="card-body p-md-5">
+
+  
+                  <h5 class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Yorum Ekle</h5>
+                
+                  <form class="mx-1 mx-md-4" method="post" enctype="multipart/form-data" action="">
+                    {% csrf_token %}
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <label class="form-label" for="form3Example1c">Ürün Adı</label>
+                        <input type="text" id="name"  onchange="onchng(this);validcontrol(this);" name="name" value="" class="form-control">
+                        <div class="valid-feedback">
+                          {{nameerr}}
+                        </div>
+                      </div>
+                    </div>
+  
+  
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <label class="form-label" for="form3Example4c">Ürün puanı</label>
+                        <input type="text" id="name"  onchange="onchng(this);validcontrol(this);" name="price" class="form-control" value="">
+                        <div class="valid-feedback">
+                        {{priceerr}}
+                        </div>
+                      </div>
+                    </div>
+
+<body>
+  <textarea>
+    Welcome to TinyMCE!
+  </textarea>
+  <script>
+    tinymce.init({
+      selector: 'textarea',
+      plugins: 'ai tinycomments mentions anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed permanentpen footnotes advtemplate advtable advcode editimage tableofcontents mergetags powerpaste tinymcespellchecker autocorrect a11ychecker typography inlinecss',
+      toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+      tinycomments_mode: 'embedded',
+      tinycomments_author: 'Author name',
+      mergetags_list: [
+        { value: 'Firs t.Name', title: 'First Name' },
+        { value: 'Email', title: 'Email' },
+      ],
+
+    });
+  </script>
+                    
+                     
+                      
+                        <button type="submit" id="submitbtn" type="button" class="btn btn-warning btn-lg ms-2 float-right" hidden>Ürünü Ekle</button>
+                      
+                  </form>
+  
+
+              
+                   
+                  
+
+                <div class="text-center">
+                    <button id="sb" type="button" onclick="document.getElementById('submitbtn').click()" class="btn btn-warning btn-lg ms-2 mt-5 mt-lg-1">Yorum Ekle</button>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+                        <script>
+
+                          function onchng(elem){
+                            if (elem.name=="name"){
+                              document.getElementById("cardname").innerHTML=String(elem.value);
+                            }                            
+                            else if (elem.name=="price"){
+                              document.getElementById("cardprice").innerHTML=String(elem.value)+" TL";
+                            }
+                            else if (elem.name=="photo"){
+                              
+                              document.getElementById("cardphoto").src=URL.createObjectURL(elem.files[0]);
+                            }
+                            else if (elem.name=="stock"){
+                              if (parseInt(elem.value)<10){
+                                
+                                var elem2=document.getElementById("cardseller")
+                                elem2.innerHTML="Tükenmek Üzere";
+                                elem2.className="badge bg-danger ms-2";
+                              }
+                              
+                            }
+                          };
+                            function validcontrol(elem){
+                              if (elem.value==""){}
+                            }
+                            function imagechange(elem){
+                                var files=elem.files;
+     
+                                // call them as such; files[0].size will get you the file size of the 0th file
+                                if (files[0].size>3000000){
+                                    alert("Dosya boyutu maximum 3 MB olabilir")
+                                    elem.value=""
+                                }
+                                if (files.length>0){ 
+                                    var idd= parseInt(elem.id.slice(-1))+1
+                                    document.getElementById("prdimg"+String(idd-1)).src=URL.createObjectURL(files[0])
+                                    if (idd!==6){
+                                    document.getElementById("imgbt"+String(idd)).style=""
+                                }
+                                };
+                            };
+                            function btnfunc(elem){
+                               
+
+                                if(elem.getElementsByClassName("prdimg")[0].src.endsWith("gsetrw5y3147h.png")){
+                                  document.getElementById('getFile'+elem.id.slice(-1)).click()
+                                   
+                                }
+                                else{
+                                  elem.childNodes[0].src="gsetrw5y3147h.png";
+                                  document.getElementById('getFile'+elem.id.slice(-1)).value=''    
+                                              
+                                  elem.getElementsByClassName("prdimg")[0].src="/static/iconvs/gsetrw5y3147h.png"
+                                }
+                            }
+                        </script>
+
+              
+                      </div>
+
+    {%endblock%}

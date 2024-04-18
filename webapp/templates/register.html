@@ -1,0 +1,18 @@
+{%extends "navbar.html"%}
+{%block content%}
+  {{error}}
+  <form action="/register" method="POST">
+      {% csrf_token %}
+      <label for="usernamel">Kullanıcı Adı:</label><br>
+      <input type="text" id="username" name="username" value=""><br>
+      <label for="pw">Şifre:</label><br>
+      <input type="password" id="pw" name="password" value=""><br><br>
+      <label for="lname">Şifre(tekrar):</label><br>
+      <input type="password" id="pw2" name="password2" value=""><br><br>
+      <label for="mail">Mail:</label><br>
+      <input type="text" id="pw2" name="email" value=""><br><br>
+      <input type="submit" value="Kayıt Ol">
+      <br>
+  </form> 
+
+  {%endblock%}
