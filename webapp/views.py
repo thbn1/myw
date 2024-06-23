@@ -176,8 +176,7 @@ def ajaxlist(request):
         searchtext=request.GET.get("searchtext")
         print(page_number)
         if page_number=="":
-            page_number = 1
-            
+            page_number = 1         
         else:
             try:
                 page_number = int(page_number)
@@ -190,12 +189,8 @@ def ajaxlist(request):
         #page_obj=Product.objects.annotate(rating = Avg("review__rating")).order_by('-rating')
         #page_obj=Product.objects.filter(id__gt=8910)[:16]
         #page_obj2=serializers.serialize("json",page_obj)
-
-
-        return JsonResponse({"object":page_obj} )
-        
+        return JsonResponse({"object":page_obj} )    
     else:
-
         return JsonResponse({"valid":True}, status = 200)
     
     if page_number.isdigit():
@@ -244,9 +239,6 @@ def listview_with_pagination(request):
 
     products=Product.objects.all()
    
-
-
-    
 
     products=Product.objects.all().prefetch_related('image_set')
     #print(products2[1].image_set.all()[0].image)
