@@ -24,7 +24,7 @@ I created custom lists of products and categories to enhance user engagement and
 
 ## Some codes from the website
 
-#I converted the product title to a URL unicode and combined it with the product ID to create the product page slug. This way, I generated a unique slug. When a product is added to the database, the slug will be created within the save method. line 44-48
+I converted the product title to a URL unicode and combined it with the product ID to create the product page slug. This way, I generated a unique slug. When a product is added to the database, the slug will be created within the save method. line 44-48
 
 some codes from models.py
 ```sh
@@ -82,6 +82,7 @@ class Review(models.Model):
 ### Using a RESTful API, I fetched the next products from the database via an AJAX GET method when the page was scrolled.
 
 some codes from views.py
+
 ```sh
 def ajaxlist(request):
     if request.method == "GET":
