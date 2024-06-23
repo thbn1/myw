@@ -13,7 +13,7 @@ I implemented RESTful APIs to facilitate secure and efficient management of prod
 Utilizing big data techniques, I collected and analyzed user activities and sales data to optimize the website for better user experience and performance.
 
 3. Web Scraping
-I employed web scraping techniques to gather data from various e-commerce sites. This data was used for price comparisons and to provide up-to-date information on products.
+I employed web scraping techniques to gather data from various e-commerce sites. This data was used for load database.
 
 5. Custom Slug
 I implemented custom slugs for SEO purposes, ensuring that product and category pages have readable and search engine-friendly URLs.
