@@ -1,5 +1,5 @@
 ### E-Commerce
- 
+ In this project, I created a fully dynamic e-commerce site to improve my skills and put my learning into practice. I used the Django framework and applied various software techniques.
 ## Used Frameworks and Methods:
 - DB: PostgreSQL, Django ORM
 - FW: Django
