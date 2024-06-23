@@ -341,3 +341,28 @@ for brand in brands:
                     time.sleep(1)
                     
 ```
+How to Use the Project
+
+    Clone this repository:
+
+    bash
+
+git clone https://github.com/your_username/e-commerce-site.git
+
+Install dependencies:
+
+bash
+
+pip install -r requirements.txt
+
+Apply database migrations:
+
+bash
+
+python manage.py migrate
+
+Start the development server:
+
+bash
+
+python manage.py runserver
