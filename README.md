@@ -343,19 +343,19 @@ for brand in brands:
 ```
 
 
-###How to Use the Project
+### How to Use the Project
 
-#Clone this repository:
+# Clone this repository:
 ```sh
 git clone https://github.com/thbn1/E-Commerce.git
 ```
 
-#Install dependencies:
+# Install dependencies:
 ```sh
 pip install -r requirements.txt
 ```
 
-#Apply database migrations:
+# Apply database migrations:
 ```sh
 python manage.py migrate
 ```
