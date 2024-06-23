@@ -79,7 +79,7 @@ class Review(models.Model):
 
 
 
-#Using a RESTful API, I fetched the next products from the database via an AJAX GET method when the page was scrolled.
+# Using a RESTful API, I fetched the next products from the database via an AJAX GET method when the page was scrolled.
 
 some codes from views.py
 ```sh
@@ -200,7 +200,7 @@ $(window).on("scroll.once", function() {
 
 
 
-##Selenium web scraping codes (for load database)
+## Selenium web scraping codes (for load database)
 ```ssh
 for brand in brands:
     listlk=[]
@@ -360,7 +360,7 @@ pip install -r requirements.txt
 python manage.py migrate
 ```
 
-#Start the development server:
+# Start the development server:
 ```sh
 python manage.py runserver
 ```
