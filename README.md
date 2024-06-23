@@ -1,9 +1,9 @@
 ### E-Commerce
  
 ## Used Frameworks and Methods:
-DB: PostgreSQL, Django ORM \n
-FW: Django \n
-Methods: Custom Slugify, Custom Pagination, Custom infinite scroll, Web scraping and crawling (for database load), ajax frame listing, Authentication \n
+- DB: PostgreSQL, Django ORM
+- FW: Django
+- Methods: Custom Slugify, Custom Pagination, Custom infinite scroll, Web scraping and crawling (for database load), ajax frame listing, Authentication
 
 ## Some screenshots from the website
 
