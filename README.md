@@ -344,25 +344,22 @@ for brand in brands:
 How to Use the Project
 
     Clone this repository:
-
-    bash
-
-git clone https://github.com/your_username/e-commerce-site.git
+```sh
+git clone https://github.com/thbn1/E-Commerce.git
+```
 
 Install dependencies:
-
-bash
-
+```sh
 pip install -r requirements.txt
+```
 
 Apply database migrations:
-
-bash
-
+```sh
 python manage.py migrate
+```
+
 
 Start the development server:
-
-bash
-
+```sh
 python manage.py runserver
+```
