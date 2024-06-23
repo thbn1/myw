@@ -6,6 +6,22 @@
 - Methods: Restful API, Custom Slugify, Custom Pagination, Custom infinite scroll, Web scraping and crawling (for database load), ajax frame listing, Authentication
 
 
+1. Restful API
+I implemented RESTful APIs to facilitate secure and efficient management of products and user information through various CRUD (Create, Read, Update, Delete) operations.
+
+2. Big Data
+Utilizing big data techniques, I collected and analyzed user activities and sales data to optimize the website for better user experience and performance.
+
+3. Web Scraping
+I employed web scraping techniques to gather data from various e-commerce sites. This data was used for price comparisons and to provide up-to-date information on products.
+
+5. Custom Slug
+I implemented custom slugs for SEO purposes, ensuring that product and category pages have readable and search engine-friendly URLs.
+
+5. Custom Page Listing
+I created custom lists of products and categories to enhance user engagement and facilitate easier navigation through the site.
+
+
 ## Some codes from the website
 
 #I converted the product title to a URL unicode and combined it with the product ID to create the product page slug. This way, I generated a unique slug. When a product is added to the database, the slug will be created within the save method. line 44-48
