@@ -324,7 +324,7 @@ def search(request):
     #page_obj=Product.objects.annotate(rating = Avg("review__rating"))[:16].values("productname","productprice","productimage","rating")
     
     #page_obj=Product.objects.filter(id__gt=8910)[:16]
-    return render(request,"listing.html",{"products": page_obj})
+    return render(request,"listing.html",{"products": page_obj,"stext":searchtext})
 
 
 def pdpage(request,str):
