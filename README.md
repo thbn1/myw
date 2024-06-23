@@ -1,6 +1,6 @@
-### E-Commerce
+## E-Commerce
  In this project, I created a fully dynamic e-commerce site to improve my skills and put my learning into practice. I used the Django framework and applied various software techniques.
-## Used Frameworks and Methods:
+### Used Frameworks and Methods:
 - DB: PostgreSQL, Django ORM
 - FW: Django
 - Methods: Restful API, Custom Slugify, Custom Pagination, Custom infinite scroll, Web scraping and crawling (for database load), ajax frame listing, Authentication
@@ -343,24 +343,24 @@ for brand in brands:
 ```
 
 
-### How to Use the Project
+## How to Use the Project
 
-# Clone this repository:
+### Clone this repository:
 ```sh
 git clone https://github.com/thbn1/E-Commerce.git
 ```
 
-# Install dependencies:
+### Install dependencies:
 ```sh
 pip install -r requirements.txt
 ```
 
-# Apply database migrations:
+### Apply database migrations:
 ```sh
 python manage.py migrate
 ```
 
-# Start the development server:
+### Start the development server:
 ```sh
 python manage.py runserver
 ```
