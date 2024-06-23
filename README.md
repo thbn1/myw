@@ -191,10 +191,16 @@ $(window).on("scroll.once", function() {
 
 ## Some screenshots from the website
 
-
+### Product listing page
 ![Screenshots](https://github.com/thbn1/E-Commerce/blob/main/forgithub/ss3.png)
+
+### Product page
 ![Screenshots](https://github.com/thbn1/E-Commerce/blob/main/forgithub/ss2.png)
+
+### Product and description tab page
 ![Screenshots](https://github.com/thbn1/E-Commerce/blob/main/forgithub/ss1.png)
+
+### Login and register page
 ![Screenshots](https://github.com/thbn1/E-Commerce/blob/main/forgithub/ss5.png)
 
 
