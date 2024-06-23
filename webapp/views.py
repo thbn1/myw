@@ -19,7 +19,7 @@ from django.db.models import Avg
 def image_upload_view(request):
 
     if request.method == 'POST':
-            return HttpResponse("Yetkiniz yok")
+           
             name=request.POST["name"]
             description=request.POST["description"].replace("\n","<br>")
             category=request.POST["category"] 
@@ -192,13 +192,10 @@ def ajaxlist(request):
         #page_obj2=serializers.serialize("json",page_obj)
 
 
- 
-        # if nick_name found return not valid new friend
-
         return JsonResponse({"object":page_obj} )
         
     else:
-        # if nick_name not found, then user can create a new friend.
+
         return JsonResponse({"valid":True}, status = 200)
     
     if page_number.isdigit():

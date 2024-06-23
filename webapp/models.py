@@ -6,7 +6,6 @@ from django.db.models import Avg
 class Product(models.Model):
     id=models.AutoField(primary_key=True)
     productname = models.CharField(max_length=255,null=False,unique=True)
-    
     productdesc=models.JSONField()
     productcategory=models.CharField(max_length=255)
     productprice=models.FloatField()
@@ -22,28 +21,17 @@ class Product(models.Model):
     productratingcount=models.IntegerField(default=0)
     productrating=models.IntegerField(default=0)
     productcards=models.JSONField()
-    
     def addstar(self,star):
-       
-        if star==5:
-            self.star5+=1
-        elif star==4:
-            self.star4+=1
-
-        elif star==3:
-            self.star3+=1
-         
-        elif star==2:
-            self.star2+=1
-           
-        elif star==1:
-            self.star1+=1
+        match star:
+            case 5: self.star5+=1
+            case 4: self.star4+=1
+            case 3: self.star3+=1
+            case 2: self.star2+=1
+            case 1: self.star1+=1
         self.productratingcount=self.star1+self.star2+self.star3+self.star4+self.star5
         self.productrating= (round(((self.star1)+(self.star2*2)+(self.star3*3)+(self.star4*4)+(self.star5*5))*2/self.productratingcount,0))
         super(Product, self).save(update_fields=["productrating","star"+str(star),"productratingcount"])
         
- 
-
     def save(self, *args, **kwargs):
         super(Product, self).save(*args, **kwargs)
         if not self.slug:
