@@ -79,7 +79,7 @@ class Review(models.Model):
 
 
 
-# Using a RESTful API, I fetched the next products from the database via an AJAX GET method when the page was scrolled.
+### Using a RESTful API, I fetched the next products from the database via an AJAX GET method when the page was scrolled.
 
 some codes from views.py
 ```sh
