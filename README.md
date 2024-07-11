@@ -38,43 +38,41 @@ class Product(models.Model):
     productseller= models.ForeignKey(User, on_delete=models.CASCADE)    
     slug = models.SlugField(max_length=255,null=True)
     productimage = models.CharField(max_length=255,null=True)  
-    star1=models.IntegerField(default=0)
-    star2=models.IntegerField(default=0)
-    star3=models.IntegerField(default=0)
-    star4=models.IntegerField(default=0)
-    star5=models.IntegerField(default=0)
-    productratingcount=models.IntegerField(default=0)
-    productrating=models.IntegerField(default=0)
+    productratingcount=models.IntegerField(default=0) #review count
+    productrating = models.DecimalField(max_digits=3, decimal_places=1,default=0.0)
     productcards=models.JSONField()
-    def addstar(self,star):
-        match star:
-            case 5: self.star5+=1
-            case 4: self.star4+=1
-            case 3: self.star3+=1
-            case 2: self.star2+=1
-            case 1: self.star1+=1
-        self.productratingcount=self.star1+self.star2+self.star3+self.star4+self.star5
-        self.productrating= (round(((self.star1)+(self.star2*2)+(self.star3*3)+(self.star4*4)+(self.star5*5))*2/self.productratingcount,0))
-        super(Product, self).save(update_fields=["productrating","star"+str(star),"productratingcount"])
-        
     def save(self, *args, **kwargs):
         super(Product, self).save(*args, **kwargs)
         if not self.slug:
             self.slug = slugify(self.productname) + "-" + str(self.id)
             self.save()
-
-class Image(models.Model):
-    image = models.ImageField(upload_to='images',null=True)
-    product=models.ForeignKey(Product, on_delete=models.CASCADE,null=True)
-    
 class Review(models.Model):
     user=models.ForeignKey(User, on_delete=models.CASCADE)    
     comment =models.TextField()
     product=models.ForeignKey(Product, on_delete=models.CASCADE)
     rating = models.IntegerField(
-    default=1, validators=[MinValueValidator(1), MaxValueValidator(5)]
-    
-    )
+    default=1, validators=[MinValueValidator(1), MaxValueValidator(5)] 
+    )  
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        product = self.product
+        total_reviews = Review.objects.filter(product=product).count()
+        total_rating = Review.objects.filter(product=product).aggregate(Sum('rating'))['rating__sum']
+        product.productratingcount = total_reviews
+        product.productrating = total_rating / total_reviews
+        product.save()  
+    def delete(self, *args, **kwargs):
+        product = self.product
+        super().delete(*args, **kwargs)
+        total_reviews = Review.objects.filter(product=product).count()
+        if total_reviews > 0:
+            total_rating = Review.objects.filter(product=product).aggregate(Sum('rating'))['rating__sum']
+            product.productratingcount = total_reviews
+            product.productrating = total_rating / total_reviews
+        else:
+            product.productratingcount = 0
+            product.productrating = 0
+        product.save()
 ```
 
 
