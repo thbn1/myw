@@ -3,9 +3,6 @@ import os
 import django
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'stageproject.settings')
 django.setup()
-
-
-
 from django.core.asgi import get_asgi_application
 # Create your tests here.
 from selenium import webdriver
@@ -20,6 +17,10 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver import Keys
 from multiprocessing import Process
 import psycopg2
+products=[]
+brands=["razer","monster","hp","asus","acer","dell"]
+
+
 options = webdriver.ChromeOptions() 
 #prefs = {"profile.managed_default_content_settings.images": 2}
 #options.add_experimental_option("prefs", prefs)
@@ -35,11 +36,6 @@ options.add_argument('--window-size=1920,1080')
 import urllib
 options = webdriver.FirefoxOptions()
 driver = webdriver.Firefox(options=options)
-
-
-
-products=[]
-brands=["razer","monster","hp","asus","acer","dell"]
 for brand in brands:
     listlk=[]
     wpage=0
@@ -98,11 +94,10 @@ for brand in brands:
                 try:
                     if h==3:
                         break
-                    name=driver.find_element(By.XPATH,'//h1[@id="product-name"]').text
+                    name=WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH,'//h1[@id="product-name"]'))).text
                     price=driver.find_element(By.XPATH,"""//span[@data-bind="markupText:'currentPriceBeforePoint'"]""").text.replace(".","")
                     desctable=driver.find_element(By.XPATH,'//table[@class="data-list tech-spec"]').get_attribute("innerHTML").replace("<a ","<span ").replace("</a>","</span>")
                     imgsrc=driver.find_element(By.XPATH,'//picture/source[@class="product-image"]').get_attribute("srcset").split(" ")[0]
-                    
                     tablerows=driver.find_elements(By.XPATH,'//table[@class="data-list tech-spec"]/tbody/tr')
                     cards={}
                     desctable={}

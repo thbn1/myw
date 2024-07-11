@@ -1,5 +1,25 @@
 $( document ).ready(function() {
-  showstar();
+    /*
+    readyelem();
+    function readyelem(){
+    var ratingsElements = document.getElementsByClassName("ratings");
+    var attributeValue = ratingsElements[0].getAttribute("pnt"); 
+    if (isNaN(attributeValue)) {
+            setTimeout(readyelem, 100); 
+            return; 
+        }
+    else{
+        showstar();
+    }
+    }
+   
+    */
+    showstar();
+     
+
+    
+
+
 });
 
 function showstar(){
@@ -9,12 +29,16 @@ function showstar(){
     var elemslength = elems.length;
     
     for (var elm = 0; elm < elemslength; elm++){
-        var rating=parseFloat(elems[elm].getAttribute("id"))/2;
-        
+        var num=elems[elm].getAttribute("pnt").replace(",",".")
+   
+        var rating=Math.round(Number(num) * 2)/2;
+       
         var child=elems[elm].children;
+
+
         
         for (var childelm = 0; childelm < rating; childelm+=1){
-            
+
             if (childelm==rating-0.5){
                 child[childelm].querySelector('svg').insertAdjacentHTML("beforeend",'<path d="M288 0c-12.2 .1-23.3 7-28.6 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3L288 439.8V0zM429.9 512c1.1 .1 2.1 .1 3.2 0h-3.2z" fill="orange"/>')
             }
@@ -57,9 +81,6 @@ $(window).on("scroll.once", function() {
                 url: "ajaxlisting",
                 data: {"cpage": c,"searchtext":st},
                 success: function (response) {
-    
-    
-    
                     for (var key in response) {
                         for (var i = 0; i < response[key].length; i++) {
                             var pname = response[key][i].productname;
@@ -74,9 +95,9 @@ $(window).on("scroll.once", function() {
                             '<img id="cardphoto" src="'+image+'" class="w-100" style="object-fit: contain;aspect-ratio: 1 / 1;"/>'+
                             '<div class="hover-overlay"><div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div></div></div><div class="card-body p-2 mt-0 align-middle pb-1" >'+
                             
-                            '<span id="cardname" class="card-title display-3 mx-0 px-0 mb-1" style="height:32px;" >'+pname+'</span>'+
+                            '<span id="cardname" class="card-title display-3 mx-0 px-0 mb-1" style="height:31px;" >'+pname+'</span>'+
                             '<div class="d-flex justify-content-center">'+
-                            '<div id="'+rating+'" class="ratings">'+
+                            '<div id="" pnt="'+rating+'" class="ratings">'+
                                 
                             '<i style="fill:#e4e4e4" class="align-text-top"><svg  style="padding-bottom:2px" height="1.1em" viewBox="0 0 576 512"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg></i> '+
                             '<i style="fill:#e4e4e4" class="align-text-top"><svg style="padding-bottom:2px" height="1.1em" viewBox="0 0 576 512"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg></i> '+
@@ -95,14 +116,9 @@ $(window).on("scroll.once", function() {
                                     '</div>';
                         
                 
-                            document.getElementById('listdiv').insertAdjacentHTML("beforeend",inhtml);
-
-    
-                             
-                                     }
-                        
-                        };
-                        
+                            document.getElementById('listdiv').insertAdjacentHTML("beforeend",inhtml);        
+                                     }  
+                        };   
                         if (response["object"].length == 0) {
                             return
                         }
@@ -112,19 +128,15 @@ $(window).on("scroll.once", function() {
                         url.searchParams.set('page',c);
                         history.replaceState(null, null, url);
                         loading = false;
-
-                        
-
-    
                 },
                 error: function (response) {
                     console.log(response)
                 }
             })
         }
-
     };
 }, 300);
+}
 
-});
+);
 

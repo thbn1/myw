@@ -163,7 +163,7 @@ def review(request):
        
     return render(request,"addrev.html")
 
-
+   
 def testing(request):
     return render(request,"index.html")
 
@@ -219,7 +219,7 @@ def listview(request):
 
     return render(request,"listing.html",{"products": page_obj})
 
-
+"""
 def listview2(request):
     page_number = request.GET.get("page")
     if page_number=="":
@@ -233,9 +233,9 @@ def listview2(request):
     page_obj=Product.objects.all()[offset:offset+16].values("productname","productprice","productimage","productrating","productratingcount","slug")
   
     return render(request,"listing.html",{"products": page_obj})
+"""
 
-
-def listview_with_pagination(request):
+'''def listview_with_pagination(request):
 
     products=Product.objects.all()
    
@@ -262,7 +262,7 @@ def listview_with_pagination(request):
     page_obj = p.get_page(page_number)
     return render(request,"listtest.html",{"products": page_obj})
 
-
+'''
 def productpage(request,slug):
 
     
@@ -277,44 +277,32 @@ def productpage(request,slug):
 
 def search(request):
     
-    #products=Product.objects.filter(productname="")
-
-
-    
-    #products=Product.objects.raw("SELECT * FROM 'webapp_product' WHERE productname=''")
-    
-
-    #products2=Image.objects.select_related("product").all()
-    #products=Product.objects.all().prefetch_related('image_set')
-    #print(products2[1].image_set.all()[0].image) 
-
-    #product5 = Product.objects.prefetch_related(
-    #        Prefetch("image_set",          
-    #        queryset=Image.objects.select_related("product"))).get(pk=1)
-    #print(product5.image_set.all().first().image)
-
-
-    
-    
-    #products3=Image.objects.values("product").annotate(id=Min("id"))
     searchtext=request.GET.get("q")
     page_number = request.GET.get("page")
-
     if page_number=="":
         page_number = 1
-        
     else:
         try:
             page_number = int(page_number)
         except:
             page_number=1
     offset=(page_number-1) * 16 # product per page
-    page_obj=Product.objects.filter(productname__icontains=searchtext)[offset:offset+16].values("productname","productprice","productimage","productrating","productratingcount","slug")
     #page_obj=Product.objects.annotate(rating = Avg("review__rating"))[:16].values("productname","productprice","productimage","rating")
-    
-    #page_obj=Product.objects.filter(id__gt=8910)[:16]
+    page_obj=Product.objects.filter(productname__icontains=searchtext)[offset:offset+16].values("productname","productprice","productimage","productrating","productratingcount","slug")
+
     return render(request,"listing.html",{"products": page_obj,"stext":searchtext})
 
+    #page_obj=Product.objects.filter(id__gt=8910)[:16]
+    #products=Product.objects.filter(productname="")
+
+    #products2=Image.objects.select_related("product").all()
+    #products=Product.objects.all().prefetch_related('image_set')
+    #print(products2[1].image_set.all()[0].image) 
+    #product5 = Product.objects.prefetch_related(
+    #        Prefetch("image_set",          
+    #        queryset=Image.objects.select_related("product"))).get(pk=1)
+    #print(product5.image_set.all().first().image)
+    #products3=Image.objects.values("product").annotate(id=Min("id"))
 
 def pdpage(request,str):
     if str=="installment":
@@ -450,7 +438,7 @@ Ekran yenileme hızı ve ekran kartı performansı son derece iyi.
 
 Günlük kullanım yanı sıra; oyun ve grafik tasarım için kullanıyorum ve bu ağır oyun ve programları extreme edition moduna geçerek sorunsuz çalıştırıyor.
 
-Kısacası teşekkürler MSI, teşekkürler Hepsiburada.
+Kısacası teşekkürler MSI.
                     </p>
                 </div>
             </div>
